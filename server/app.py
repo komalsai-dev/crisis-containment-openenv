@@ -38,7 +38,7 @@ except Exception as e:  # pragma: no cover
 try:
     from ..models import CrisisContainmentAction, CrisisContainmentObservation
     from .crisis_containment_environment import CrisisContainmentEnvironment
-except ModuleNotFoundError:
+except ImportError:
     from models import CrisisContainmentAction, CrisisContainmentObservation
     from server.crisis_containment_environment import CrisisContainmentEnvironment
 
