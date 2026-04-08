@@ -152,9 +152,9 @@ async def main(task_name: str) -> None:
 
         # Calculate final score based on health and accumulated rewards?
         # Actually in env, the final reward incorporates health. Normalizing for the hackathon [0, 1]:
-        # Using the last observation's network_health as the primary metric, bounded to [0,1]
+        # Using the last observation's network_health as the primary metric, bounded strictly to (0,1)
         score = getattr(obs, "network_health", sum(rewards))
-        score = min(max(score, 0.0), 1.0)
+        score = min(max(score, 0.001), 0.999)
         success = score >= 0.5
 
     finally:
