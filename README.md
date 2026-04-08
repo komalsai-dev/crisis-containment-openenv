@@ -2,7 +2,7 @@
 title: Crisis Containment Viral Misinformation Graph
 emoji: 🛡️
 colorFrom: red
-colorTo: orange
+colorTo: yellow
 sdk: docker
 pinned: false
 app_port: 8000
