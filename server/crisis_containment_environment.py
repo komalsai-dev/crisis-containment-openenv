@@ -191,7 +191,7 @@ class CrisisContainmentEnvironment(Environment):
 
         obs = self._get_observation()
         # Strictly bound the reward returned via HTTP/internal to (0, 1) per judging rules
-        obs.reward = min(max(reward, 0.001), 0.999)
+        obs.reward = min(max(reward, 0.01), 0.99)
         obs.done = done
         return obs
 

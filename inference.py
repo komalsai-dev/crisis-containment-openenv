@@ -57,7 +57,7 @@ def log_step(step: int, action: str, reward: float, done: bool, error: Optional[
 
 def log_end(success: bool, steps: int, score: float, rewards: List[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
-    print(f"[END] success={str(success).lower()} steps={steps} rewards={rewards_str}", flush=True)
+    print(f"[END] success={str(success).lower()} steps={steps} score={score:.3f} rewards={rewards_str}", flush=True)
 
 def build_user_prompt(step: int, obs: CrisisContainmentObservation, last_reward: float) -> str:
     feed = json.dumps([p.model_dump() for p in obs.trending_posts], indent=2)
@@ -127,7 +127,7 @@ async def main(task_name: str) -> None:
             obs = env.step(action)
             # Clamp step reward to strictly (0, 1) to pass agentic validators
             raw_reward = obs.reward or 0.0
-            reward = min(max(raw_reward, 0.001), 0.999)
+            reward = min(max(raw_reward, 0.01), 0.99)
             
             done = getattr(obs, "done", False)
             error = None
@@ -147,7 +147,7 @@ async def main(task_name: str) -> None:
         # Actually in env, the final reward incorporates health. Normalizing for the hackathon [0, 1]:
         # Using the last observation's network_health as the primary metric, bounded strictly to (0,1)
         score = getattr(obs, "network_health", sum(rewards))
-        score = min(max(score, 0.001), 0.999)
+        score = min(max(score, 0.01), 0.99)
         success = score >= 0.5
 
     finally:
