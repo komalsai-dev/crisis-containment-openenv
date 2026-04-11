@@ -25,13 +25,13 @@ This is the exact challenge platforms like Meta, X (Twitter), and Reddit deal wi
 ### Task 1 - Easy: The Isolated Spam Bot
 A single low-follower bot is spamming links with repetitive, clearly harmful content.
 - **Objective**: Identify the bot from the feed and apply a Suspend_Account action within the step limit.
-- **Expected Score**: 1.00
+- **Expected Score**: 0.99
 - **Win Condition**: Bot is suspended without touching innocent accounts.
 
 ### Task 2 - Medium: Contextual Intent Recognition
 A fake bank-run rumor is spreading. One user is amplifying the panic maliciously. Another user, a journalist, is quoting the same rumor to debunk it.
 - **Objective**: Suspend the malicious spreader. Do NOT suspend the journalist.
-- **Expected Score**: 1.00
+- **Expected Score**: 0.99
 - **Win Condition**: Correct action applied to each user based on intent, not just keywords.
 
 ### Task 3 - Hard: Viral Outbreak Containment
@@ -88,8 +88,8 @@ Baseline agent using Qwen/Qwen2.5-72B-Instruct via Hugging Face Inference API:
 
 | Task | Score |
 |---|---|
-| easy | 1.000 |
-| medium | 1.000 |
+| easy | 0.990 |
+| medium | 0.990 |
 | hard | 0.979 |
 
 ## Setup Instructions
