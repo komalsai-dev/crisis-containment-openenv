@@ -190,8 +190,8 @@ class CrisisContainmentEnvironment(Environment):
             reward += health
 
         obs = self._get_observation()
-        # Clamp reward approx to help with cumulative bounds
-        obs.reward = reward
+        # Strictly bound the reward returned via HTTP/internal to (0, 1) per judging rules
+        obs.reward = min(max(reward, 0.001), 0.999)
         obs.done = done
         return obs
 
