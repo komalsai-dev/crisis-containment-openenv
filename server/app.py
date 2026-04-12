@@ -87,6 +87,13 @@ def crisis_gradio_builder(web_manager, action_fields, metadata, is_chat_env, tit
                 
                 with gr.Accordion("Incident Action Log", open=True):
                     history_log = gr.HTML(value="<div style='color:gray'>No containment actions logged yet...</div>")
+                
+                with gr.Accordion("📚 Complete Documentation (README)", open=False):
+                    try:
+                        with open("README.md", "r", encoding="utf-8") as f:
+                            gr.Markdown(f.read())
+                    except Exception:
+                        gr.Markdown("*Documentation temporarily unavailable.*")
         
         history_state = gr.State([])
 
