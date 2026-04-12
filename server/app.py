@@ -49,7 +49,7 @@ except ImportError:
 
 def crisis_gradio_builder(web_manager, action_fields, metadata, is_chat_env, title, quick_start_md):
     """Custom premium Gradio Builder for Crisis Containment."""
-    with gr.Blocks(title="Crisis Containment Agent", theme=gr.themes.Monochrome()) as demo:
+    with gr.Blocks(title="Crisis Containment Agent") as demo:
         gr.Markdown(f"# 🛡️ Crisis Containment: Viral Misinformation Graph")
         gr.Markdown("Welcome to the Crisis Containment Operations Center. Use the Human/Agent testing interface below to step through an outbreak simulation.")
         
